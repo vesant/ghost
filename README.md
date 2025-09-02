@@ -22,13 +22,13 @@ To run the application, execute the main entry point:
 python src/main.py
 ```
 
-For detailed usage instructions and examples, please refer to the [Usage Documentation](docs/usage.md).
+For detailed usage instructions and examples, please refer to the [Usage Documentation](ghost-system/docs/usage.md).
 
 ## Documentation
 Comprehensive documentation is available in the `docs` directory, including:
-- [Index](docs/index.md): Overview and getting started guide.
-- [Architecture](docs/architecture.md): Detailed architecture and design principles.
-- [Usage](docs/usage.md): Instructions and examples for using the application.
+- [Index](ghost-system/docs/index.md): Overview and getting started guide.
+- [Architecture](ghost-system/docs/architecture.md): Detailed architecture and design principles.
+- [Usage](ghost-system/docs/usage.md): Instructions and examples for using the application.
 
 ## Contributing
 Contributions are welcome! Please feel free to submit issues or pull requests to enhance the functionality of G.H.O.S.T.
