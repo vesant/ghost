@@ -30,19 +30,26 @@ class GhostApp:
         ### End GUI Initialization
 
     def webcam_loop(self):
-        cap = cv2.VideoCapture(1)  # Use 0 for default camera, 1 for external
+        cap = cv2.VideoCapture(0)  # Use 0 for default camera, 1 for external
         print(f"Webcam opened: {cap.isOpened()}, Frame size: {cap.get(cv2.CAP_PROP_FRAME_WIDTH)}x{cap.get(cv2.CAP_PROP_FRAME_HEIGHT)}")
         while True:
             ret, frame = cap.read()
             if ret:
                 # add here movement detection and reactions
-                # for debug, it will display a message if movement is detected (simple diff)
                 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
                 if hasattr(self, 'prev_gray'):
                     diff = cv2.absdiff(self.prev_gray, gray)
-                    if diff.mean() > 5:  # Simple threshold
-                        self.message.config(text="Movement detected!")
+                    if diff.mean() > 5:  # movement detection (1 = highly sensitive, 10 = less sensitive)
+                        self.prompt.config(text=">!")
+                        self.movement = True
+                    else:
+                        if hasattr(self, 'movement') and self.movement:
+                            self.prompt.config(text=">_")
+                            self.movement = False
+                else:
+                    self.prompt.config(text=">_")
                 self.prev_gray = gray
+                # precisa de melhorias, para identificar movimentos mais complexos e manter o estado
             else:
                 self.message.config(text="Webcam not found.")
                 break
